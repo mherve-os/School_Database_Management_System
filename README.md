@@ -1,4 +1,4 @@
-# Employee Management Database (Using Oracle as RDBMS)
+# School Database Management System (Using Oracle as RDBMS)
 
 This README provides an overview of creating a School Database Management System using Oracle SQL and PL/SQL Developer. The database manages critical information about teachers, students, departments, courses, enrollments, assignments, and class schedules within a school.
 ## Table Structures
