@@ -11,6 +11,7 @@ CREATE TABLE departments (
     department_name VARCHAR2(100) NOT NULL
 );
 ```
+![image](https://github.com/user-attachments/assets/3d9cc3a1-b193-4329-9182-963fde771ccd)
 
 ## teachers Table
 
@@ -28,7 +29,7 @@ CREATE TABLE teachers (
         REFERENCES departments (department_id)
 );
 ```
-
+![image](https://github.com/user-attachments/assets/ecebdd84-d3dc-4332-a540-0b1328ab8964)
 ## students Table
 
 ```sql
@@ -47,6 +48,7 @@ CREATE TABLE students (
 );
 
 ```
+![image](https://github.com/user-attachments/assets/8ae4d822-fcb1-45b6-abc6-75b790dc1e4e)
 
 ## courses Table
 
@@ -62,6 +64,7 @@ CREATE TABLE courses (
         REFERENCES departments (department_id)
 );
 ```
+![image](https://github.com/user-attachments/assets/adeb0628-c2be-4dfd-914d-a2e1629266ba)
 
 ## enrollments Table
 ```sql
@@ -80,6 +83,7 @@ CREATE TABLE enrollments (
 );
 
 ```
+![image](https://github.com/user-attachments/assets/b19894d9-97e7-4b51-84d4-de42a4e75b97)
 
 ## assignments Table
 ```sql
@@ -97,7 +101,7 @@ CREATE TABLE assignments (
 );
 
 ```
-
+![image](https://github.com/user-attachments/assets/10465c3d-96ef-4d5f-b703-48f419549e10)
 ## classes Table
 ```sql
 CREATE TABLE classes (
