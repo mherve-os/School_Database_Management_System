@@ -38,3 +38,16 @@ BEGIN
         END IF;
     END;
 END;
+
+---Prevent Inserting Students with Duplicate Email
+CREATE OR REPLACE TRIGGER trg_before_insert_student
+BEFORE INSERT ON students
+FOR EACH ROW
+BEGIN
+    -- Check if the email already exists
+    IF EXISTS (SELECT 1 FROM students WHERE email = :NEW.email) THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Cannot insert student. Email already exists.');
+    END IF;
+END;
+/
+
