@@ -117,6 +117,7 @@ CREATE TABLE classes (
 );
 
 ```
+![image](https://github.com/user-attachments/assets/c6113a78-9f41-4f44-ade5-fe94497d27cd)
 
 # Inserting Records
 
