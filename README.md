@@ -132,8 +132,9 @@ INSERT INTO departments (department_name) VALUES ('Physics');
 INSERT INTO departments (department_name) VALUES ('Biology');
 INSERT INTO departments (department_name) VALUES ('Chemistry');
 ```
+![image](https://github.com/user-attachments/assets/a76c98cc-332d-4888-9faf-7fc834f29811)
 
-## nsert teachers
+## Insert teachers
 
 ```sql 
 INSERT INTO teachers (first_name, last_name, email, department_id, hire_date, salary) 
@@ -147,6 +148,8 @@ VALUES ('Lisa', 'White', 'lisa.white@school.edu', 4, TO_DATE('2021-01-10', 'YYYY
 INSERT INTO teachers (first_name, last_name, email, department_id, hire_date, salary) 
 VALUES ('Michael', 'Green', 'michael.green@school.edu', 5, TO_DATE('2017-03-18', 'YYYY-MM-DD'), 58000);
 ```
+![image](https://github.com/user-attachments/assets/bfa7de08-5cdf-41b7-94db-71f202c5d90f)
+
 ## Insert students
 
 ```sql
@@ -161,6 +164,7 @@ VALUES ('Diana', 'Miller', TO_DATE('2002-07-30', 'YYYY-MM-DD'), 'Female', 'diana
 INSERT INTO students (first_name, last_name, birth_date, gender, email, department_id, enrollment_date)
 VALUES ('Eve', 'Martinez', TO_DATE('2001-12-12', 'YYYY-MM-DD'), 'Female', 'eve.martinez@school.edu', 5, TO_DATE('2021-09-01', 'YYYY-MM-DD'));
 ```
+![image](https://github.com/user-attachments/assets/057cbb0f-3f5a-4b06-87ef-a337928b63ac)
 
 ## Insert courses
 
@@ -176,6 +180,7 @@ VALUES ('Cell Biology', 'BIO101', 4, 3.0);
 INSERT INTO courses (course_name, course_code, department_id, credits)
 VALUES ('Organic Chemistry', 'CHEM101', 5, 3.5);
 ```
+![image](https://github.com/user-attachments/assets/70aa3032-ef68-4df5-b585-092ba6927b5a)
 
 ## Insert enrollments
 
@@ -191,6 +196,8 @@ VALUES (4, 4, TO_DATE('2022-09-05', 'YYYY-MM-DD'), 'B');
 INSERT INTO enrollments (student_id, course_id, enrollment_date, grade)
 VALUES (5, 5, TO_DATE('2021-09-05', 'YYYY-MM-DD'), 'A');
 ```
+![image](https://github.com/user-attachments/assets/7e616128-5ef6-4b69-9da2-ad229ec3e28d)
+
 ## Insert assignments
 
 ```sql
@@ -205,6 +212,8 @@ VALUES (4, 4, TO_DATE('2021-01-10', 'YYYY-MM-DD'));
 INSERT INTO assignments (teacher_id, course_id, assignment_date)
 VALUES (5, 5, TO_DATE('2017-03-18', 'YYYY-MM-DD'));
 ```
+![image](https://github.com/user-attachments/assets/f3712439-8c53-495a-b3a3-0bb777244be2)
+
 ## Insert classes
 
 ```sql
@@ -220,6 +229,7 @@ INSERT INTO classes (course_id, class_date, room_number, start_time, end_time)
 VALUES (5, TO_DATE('2023-01-19', 'YYYY-MM-DD'), 'Room E5', TO_TIMESTAMP('09:30:00', 'HH24:MI:SS'), TO_TIMESTAMP('11:30:00', 'HH24:MI:SS'));
 
 ```
+![image](https://github.com/user-attachments/assets/71bcfa7b-45f3-461c-a92b-b373fe3ebc9e)
 
 ## Conceptual, Logical and Physical Data Model
 
