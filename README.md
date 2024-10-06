@@ -272,6 +272,62 @@ JOIN classes cl ON c.course_id = cl.course_id;
 
 ```
 ![image](https://github.com/user-attachments/assets/7792d0b3-e983-44a8-8027-c1a50e74d083)
+## Trigger
+### BEFORE UPDATE a Student's Email (Ensure Correct Format)
+```sql
+CREATE OR REPLACE TRIGGER trg_before_update_student_email
+BEFORE UPDATE ON students
+FOR EACH ROW
+BEGIN
+    IF :NEW.email NOT LIKE '%@%.%' THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Invalid email format');
+    END IF;
+END;
+
+```
+![image](https://github.com/user-attachments/assets/4f3db57c-c0d4-44cd-ba9a-ee06b8cec0a5)
+
+###  Before Updating a Teacher's Salary (Ensure Salary Increase is Reasonable)
+```sql
+CREATE OR REPLACE TRIGGER trg_before_update_teacher_salary
+BEFORE UPDATE ON teachers
+FOR EACH ROW
+BEGIN
+    IF :NEW.salary > :OLD.salary * 1.10 THEN
+        RAISE_APPLICATION_ERROR(-20002, 'Salary increase cannot exceed 10%');
+    END IF;
+END;
+
+```
+![image](https://github.com/user-attachments/assets/888ab1a7-f57c-4efb-8b9d-449ad4982feb)
+
+## Prevent Deletion of Students with Active Enrollments
+```sql
+CREATE OR REPLACE TRIGGER trg_before_delete_student
+BEFORE DELETE ON students
+FOR EACH ROW
+BEGIN
+    DECLARE
+        v_count NUMBER;
+    BEGIN
+        -- Check if the student is enrolled in any courses
+        SELECT COUNT(*)
+        INTO v_count
+        FROM enrollments
+        WHERE student_id = :OLD.student_id;
+
+        -- Raise error if the student is enrolled in any courses
+        IF v_count > 0 THEN
+            RAISE_APPLICATION_ERROR(-20005, 'Cannot delete student with active enrollments.');
+        END IF;
+    END;
+END;
+
+```
+![image](https://github.com/user-attachments/assets/9fb0f936-e02c-4af6-b25f-7a5d7b92653a)
+## example
+![image](https://github.com/user-attachments/assets/690002e1-6244-4539-9a21-c4271e219837)
+
 
 ## Conceptual, Logical and Physical Data Model
 
