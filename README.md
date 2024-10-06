@@ -231,6 +231,48 @@ VALUES (5, TO_DATE('2023-01-19', 'YYYY-MM-DD'), 'Room E5', TO_TIMESTAMP('09:30:0
 ```
 ![image](https://github.com/user-attachments/assets/71bcfa7b-45f3-461c-a92b-b373fe3ebc9e)
 
+## Retrieve
+These queries will allow you to retrieve data based on relationships across tables using JOIN
+### Retrieve Student Enrollments with Course and Department Information
+```sql
+SELECT s.first_name || ' ' || s.last_name AS student_name, 
+       c.course_name, 
+       d.department_name, 
+       e.grade
+FROM students s
+JOIN enrollments e ON s.student_id = e.student_id
+JOIN courses c ON e.course_id = c.course_id
+JOIN departments d ON c.department_id = d.department_id;
+
+```
+![image](https://github.com/user-attachments/assets/d5e8cc91-eca5-4026-83f6-ed25727b156b)
+
+### Retrieve Teacher Assignments with Courses and Departments
+```sql
+SELECT t.first_name || ' ' || t.last_name AS teacher_name, 
+       c.course_name, 
+       d.department_name, 
+       a.assignment_date
+FROM teachers t
+JOIN assignments a ON t.teacher_id = a.teacher_id
+JOIN courses c ON a.course_id = c.course_id
+JOIN departments d ON c.department_id = d.department_id;
+
+```
+![image](https://github.com/user-attachments/assets/8e3b9018-2e70-417b-85c9-51f72a344755)
+### Retrieve Course Schedules (Classes) with Room and Timing Details
+```sql
+SELECT c.course_name, 
+       cl.room_number, 
+       cl.class_date, 
+       cl.start_time, 
+       cl.end_time
+FROM courses c
+JOIN classes cl ON c.course_id = cl.course_id;
+
+```
+![image](https://github.com/user-attachments/assets/7792d0b3-e983-44a8-8027-c1a50e74d083)
+
 ## Conceptual, Logical and Physical Data Model
 
 ![alt text](school_db.png)
