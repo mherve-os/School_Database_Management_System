@@ -324,11 +324,23 @@ BEGIN
 END;
 
 ```
-![image](https://github.com/user-attachments/assets/9fb0f936-e02c-4af6-b25f-7a5d7b92653a)
 ## example
 ![image](https://github.com/user-attachments/assets/690002e1-6244-4539-9a21-c4271e219837)
 
+## Prevent Inserting Students with Duplicate Email
+```sql
+CREATE OR REPLACE TRIGGER trg_before_insert_student
+BEFORE INSERT ON students
+FOR EACH ROW
+BEGIN
+    -- Check if the email already exists
+    IF EXISTS (SELECT 1 FROM students WHERE email = :NEW.email) THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Cannot insert student. Email already exists.');
+    END IF;
+END;
+/
 
+```
 ## Conceptual, Logical and Physical Data Model
 
 ![alt text](school_db.png)
