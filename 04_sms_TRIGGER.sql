@@ -18,3 +18,23 @@ BEGIN
     END IF;
 END;
 
+---Prevent Deletion of Students with Active Enrollments
+CREATE OR REPLACE TRIGGER trg_before_delete_student
+BEFORE DELETE ON students
+FOR EACH ROW
+BEGIN
+    DECLARE
+        v_count NUMBER;
+    BEGIN
+        -- Check if the student is enrolled in any courses
+        SELECT COUNT(*)
+        INTO v_count
+        FROM enrollments
+        WHERE student_id = :OLD.student_id;
+
+        -- Raise error if the student is enrolled in any courses
+        IF v_count > 0 THEN
+            RAISE_APPLICATION_ERROR(-20005, 'Cannot delete student with active enrollments.');
+        END IF;
+    END;
+END;
